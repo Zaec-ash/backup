@@ -1,5 +1,4 @@
 name: Trigger Database Backup
-
 on:
   schedule:
     # Every 4 hours, on the hour. GitHub's scheduler can run a few minutes
