@@ -1,0 +1,9 @@
+{
+  "name": "orgtrack-backup-trigger",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Triggers the OrgTrack database backup on a schedule via a real headless browser, working around InfinityFree's free-subdomain bot wall.",
+  "dependencies": {
+    "playwright": "^1.47.0"
+  }
+}
