@@ -1,0 +1,31 @@
+name: Trigger Database Backup
+
+on:
+  schedule:
+    # Every 4 hours, on the hour. GitHub's scheduler can run a few minutes
+    # late during high-load periods on their infrastructure — this is
+    # documented/expected behavior on their end, not a bug in this workflow.
+    - cron: '0 */4 * * *'
+  workflow_dispatch: {} # lets you manually click "Run workflow" to test
+
+jobs:
+  trigger-backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright
+        run: |
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: Run backup trigger (real headless browser)
+        env:
+          BACKUP_URL: ${{ secrets.BACKUP_URL }}
+        run: node backup-trigger.js
