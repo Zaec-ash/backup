@@ -4,7 +4,7 @@ on:
     # Every 4 hours, on the hour. GitHub's scheduler can run a few minutes
     # late during high-load periods on their infrastructure — this is
     # documented/expected behavior on their end, not a bug in this workflow.
-    - cron: '0 */4 * * *'
+    - cron: '0 */12 * * *'
   workflow_dispatch: {} # lets you manually click "Run workflow" to test
 
 jobs:
